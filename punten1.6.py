@@ -22,7 +22,7 @@ import math
 import requests
 
 def get_visit_count(namespace="puntenapp"):
-    url = f"https://api.countapi.xyz/hit/{namespace}/visits"
+    url = f"https://api.countapi.dev/hit/{namespace}/visits"
     try:
         res = requests.get(url, timeout=3)
         return res.json().get("value", 0)
