@@ -372,6 +372,9 @@ if st is not None:
     st.set_page_config(page_title="Meerkamp & Competitie punten – v1.6", page_icon="🏃", layout="centered")
     st.title("🏃 Puntenberekening: Meerkamp & Competitie")
 
+    visits = get_visit_count()
+    st.caption(f"👀 Deze app is {visits}× bezocht.")
+
     categories = [
         "Sen Man Meerkamp",
         "Sen Vrouw Meerkamp",
