@@ -19,6 +19,16 @@ from dataclasses import dataclass
 from typing import Dict, Tuple, Literal, Union
 import math
 
+import requests
+
+def get_visit_count(namespace="puntenapp"):
+    url = f"https://api.countapi.xyz/hit/{namespace}/visits"
+    try:
+        res = requests.get(url, timeout=3)
+        return res.json().get("value", 0)
+    except Exception:
+        return "?"
+
 # ---------- Types ----------
 Gender = Literal["men", "women"]
 UnitKind = Literal["time", "distance_m", "distance_cm"]
@@ -371,6 +381,9 @@ _NL_NAMES = {
 if st is not None:
     st.set_page_config(page_title="Meerkamp & Competitie punten – v1.6", page_icon="🏃", layout="centered")
     st.title("🏃 Puntenberekening: Meerkamp & Competitie")
+
+visits = get_visit_count()
+st.caption(f"👀 Deze app is {visits}× bezocht.")
 
     categories = [
         "Sen Man Meerkamp",
